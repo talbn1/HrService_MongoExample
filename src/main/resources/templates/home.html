@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script >
+	$(document).ready( function() {
+  	  //$('#employeesTable tbody').append('<tr class="child"><td>blahblah</td></tr>');
+		$("#employeesDiv").append("<table>")
+	    $.ajax( {
+	        url: "http://localhost:8080/employees"
+	    }).then(function(result) {
+	    	$.each(result, function(key,value){
+	    		$("#employeesDiv").append("<tr>"+
+	    				"<td width='130px'>"+ value.firstName+"</td>"+
+	    				"<td width='130px'>"+ value.lastName+" </td>"+
+	    				"<td width='130px'>"+ value.position+" </td>"+	
+	    				"<td><a href=http://localhost:8080/profile/" + value.employeeId +
+	    				      "><button type='button'>View</button></a></td>" +
+	    				"</tr>" );					
+	    	});		    	
+		});
+		$("#employeesDiv").append("</table>")
+	});  
+	
+	
+	     
+</script>
+<meta charset="windows-1255">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2 align="center">Employees List: </h2>
+	<div id="employeesDiv"> </div>
+</body>
+</html>

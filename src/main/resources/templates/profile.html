@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link href = "css/dialog.css" rel = "stylesheet"/>
+<script>
+	var currentEmployeeId = 0;
+		$(document).ready(function() {
+		    var employeeId = $("#employeeIdDiv").text();
+		    $("#personalDetailsDiv").append("<table>")
+		    $.ajax({url: "http://localhost:8080/employee/" + employeeId})
+		        .then(function(result) {
+		            $("#personalDetailsDiv").append("<tr>" 
+		                		+ "<td width='130px'>Name:</td>" 
+		                		+ "<td width='130px'>" + result.firstName + " " + result.lastName + " </td>" 
+		                		+ "</tr><tr>" 
+		                		+"<td width='130px'>Position:</td>" + "<td width='130px'>" + result.position + "</td>" 
+		                		+ "</tr>" + "<tr>" 
+		                		+ "<td width='130px'>Manager :</td>" + "<td width='130px'>" + result.reportsTo + "</td>" 
+		                		+ "<td><a href=http://localhost:8080/employeeReport/" + result.employeeId +
+		                    "><button type='button' class='btn btn-primary'>Report</button></a></td>" + "</tr>");
+		            $("#personalDetailsDiv").append(
+		                "</table>")
+		            $("#myTasksDiv").append("<table >")
+		            $.each(result.tasks,function(key, value) {
+		                        $("#myTasksDiv").append(
+		                                "<tr>" + "<td width='130px'>" + value.text + "</td>"
+		                                + "<td width='130px'>" + value.assignDate + " </td>" 
+		                                + "<td width='130px'>" + value.dueDate + " </td>" + "</tr>");
+		                    });
+		            $("#myTasksDiv").append("</table>")
+
+		            $("#mySubordinatesDiv").append(
+		                "<table>")
+		            $.each(result.subordinates,
+		                    function(key, value) {
+		                        var currentSub = value.subordinatesId;
+		                        $.ajax({url: "http://localhost:8080/employee/" + currentSub
+		                            })
+		                            .then(function(subResult) {
+		                                $("#mySubordinatesDiv").append(
+		                                        "<tr>"
+		                                        + "<td width='130px'>" + subResult.firstName + " " + subResult.lastName 
+		                                        + "</td>" + "<td width='130px'>" + subResult.position + "</td>" + "<td width='130px'><a href=http://localhost:8080/profile/" + subResult.employeeId +
+		                                        "><button class='taskButton' align='center'>Assign Task</button></a></td>" 
+		                                        + "</tr>");
+		                            });
+		                        $("#mySubordinatesDiv").append("</table>")
+		                    });
+		        });
+
+		});
+</script>
+
+<meta charset="windows-1255">
+<title>Profile</title>
+</head>
+<body>
+	<div th:utext="${employeeId}" id="employeeIdDiv" hidden="true"></div>
+	<div id="personalDetailsDiv"></div>
+	<div id="myTasksDiv"><h6>My Tasks</h6></div>
+	<div id="mySubordinatesDiv"><h6>My Subordinates</h6></div>
+</body>
+</html>
+
+
+
+
