@@ -1,0 +1,114 @@
+/* 1 */
+{
+    "_id" : ObjectId("5c602444d09af37d94a1df9a"),
+    "employeeId" : "1",
+    "firstName" : "Shalom",
+    "lastName" : "Cohen",
+    "position" : "Developer",
+    "reportsTo" : "Ronen Shalev",
+    "report" : {
+        "text" : "done this",
+        "reportDate" : "21/02/18"
+    },
+    "tasks" : [ 
+        {
+            "text" : "Do this task",
+            "assignDate" : "19/02/18",
+            "dueDate" : "22/02/18"
+        }, 
+        {
+            "text" : "Do that task",
+            "assignDate" : "01/02/20",
+            "dueDate" : "22/02/20"
+        }
+    ]
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5c602444d09af37d94a1df9c"),
+    "employeeId" : "2",
+    "firstName" : "Yaron",
+    "lastName" : "Levi",
+    "position" : "Developer",
+    "reportsTo" : "Ronen Shalev",
+    "report" : {
+        "text" : "done this",
+        "reportDate" : "21/02/18"
+    },
+    "tasks" : [ 
+        {
+            "text" : "Do this task",
+            "assignDate" : "19/02/18",
+            "dueDate" : "22/02/18"
+        }, 
+        {
+            "text" : "Do that task",
+            "assignDate" : "01/02/20",
+            "dueDate" : "22/02/20"
+        }
+    ]
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5c602444d09af37d94a1df9e"),
+    "employeeId" : "3",
+    "firstName" : "Ohad",
+    "lastName" : "David",
+    "position" : "Developer",
+    "reportsTo" : "Ronen Shalev",
+    "report" : {
+        "text" : "Finished this",
+        "reportDate" : "21/02/18"
+    },
+    "tasks" : [ 
+        {
+            "text" : "Do this task",
+            "assignDate" : "19/02/18",
+            "dueDate" : "22/02/18"
+        }, 
+        {
+            "text" : "Do that task",
+            "assignDate" : "01/02/20",
+            "dueDate" : "22/02/20"
+        }
+    ]
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5c602ce5d09af37d94a1e712"),
+    "employeeId" : "4",
+    "firstName" : "Ronen",
+    "lastName" : "Shalev",
+    "position" : "Managment",
+    "reportsTo" : "Eli Yagel",
+    "report" : {
+        "text" : "Finished this",
+        "reportDate" : "21/02/18"
+    },
+    "tasks" : [ 
+        {
+            "text" : "do this",
+            "assignDate" : "19/02/18",
+            "dueDate" : "22/02/18"
+        }, 
+        {
+            "text" : "do that",
+            "assignDate" : "01/02/20",
+            "dueDate" : "22/02/20"
+        }
+    ],
+    "subordinates" : [ 
+        {
+            "subordinatesId" : "1"
+        }, 
+        {
+            "subordinatesId" : "2"
+        }, 
+        {
+            "subordinatesId" : "3"
+        }
+    ]
+}
